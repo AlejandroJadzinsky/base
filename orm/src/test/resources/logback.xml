@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+    <resetJUL>true</resetJUL>
+  </contextListener>
+
+  <!--
+  To extend or modify logback configuration define this property in your
+   .m2/settings.xml. Here it is an example.
+
+  <profile>
+    <id>user-settings</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <properties>
+      <user-defined.logback>
+        <![CDATA[
+          <logger name="org.orm.SQL" level="debug" />
+        ]]>
+      </user-defined.logback>
+    </properties>
+  </profile>
+  -->
+  ${user-defined.logback}
+
+  <appender name="main" class="ch.qos.logback.core.FileAppender">
+    <encoder>
+      <pattern>%-5level %logger{0} - %msg%n</pattern>
+    </encoder>
+    <append>false</append>
+    <file>${basedir}/target/logs/base.log</file>
+  </appender>
+
+  <logger name="com.base" level="debug" />
+
+  <root level="error">
+    <appender-ref ref="main"/>
+  </root>
+</configuration>

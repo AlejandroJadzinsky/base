@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.base</groupId>
+    <artifactId>base</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
+
+  <groupId>com.base</groupId>
+  <artifactId>app</artifactId>
+  <version>0.1-SNAPSHOT</version>
+  <name>Application</name>
+
+  <dependencies>
+    <!-- move it to base pom-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot</artifactId>
+      <version>${spring-boot.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<id>repackage</id>-->
+            <!--<goals><goal>repackage</goal></goals>-->
+            <!--<phase>pre-integration-test</phase>-->
+            <!--<configuration><classifier>boot</classifier></configuration>-->
+          <!--</execution>-->
+        <!--</executions>-->
+
+        <configuration>
+          <mainClass>com.base.app.ApplicationRunner</mainClass>
+          <folders>
+            <folder>app/target/test-classes</folder>
+          </folders>
+          <useTestClasspath>true</useTestClasspath>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
